@@ -4,6 +4,7 @@
     <js-module name="CooeeSdkPlugin" src="www/CooeeSdkPlugin.js">
         <clobbers target="cordova.plugins.CooeeSdkPlugin" />
     </js-module>
+    <dependency id='cordova-plugin-android-permissions' />
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="CooeeSdkPlugin">

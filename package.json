@@ -1,14 +1,14 @@
 {
-  "name": "org.letscooee.cooeesdk",
-  "version": "0.0.1",
-  "description": "",
-  "cordova": {
-    "id": "org.letscooee.cooeesdk",
-    "platforms": []
-  },
-  "keywords": [
-    "ecosystem:cordova"
-  ],
-  "author": "",
-  "license": "ISC"
+    "name": "org.letscooee.cooeesdk",
+    "version": "0.0.1",
+    "description": "",
+    "cordova": {
+        "id": "org.letscooee.cooeesdk",
+        "platforms": []
+    },
+    "keywords": [
+        "ecosystem:cordova"
+    ],
+    "author": "",
+    "license": "ISC"
 }
