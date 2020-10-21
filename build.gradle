@@ -6,7 +6,7 @@ allprojects {
 
 
 dependencies {
-    implementation 'com.letscooee.cooee-android-sdk:cooee-android-sdk:0.0.6'
+    implementation 'com.letscooee.cooee-android-sdk:cooee-android-sdk:0.0.7'
 }
 
 buildscript {

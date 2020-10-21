@@ -14,6 +14,7 @@
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
         <source-file src="src/android/CooeeSdkPlugin.java" target-dir="src/org/letscooee/cooeesdk/CooeeSdkPlugin" />
         <framework src="./build.gradle" custom="true" type="gradleReference"></framework>
+        <preference name="android-minSdkVersion" value="21" />
         <config-file after="uses-permission" parent="/manifest" target="AndroidManifest.xml">
             <uses-permission android:name="android.permission.ACCESS_COURSE_LOCATION" />
             <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
