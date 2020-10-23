@@ -4,18 +4,18 @@
 
     <name>Cooee Cordova Plugin</name>
 
-    <js-module name="CooeeSdkPlugin" src="www/CooeeSdkPlugin.js">
-        <clobbers target="cordova.plugins.CooeeSdkPlugin"/>
+    <js-module name="CooeeSDKPlugin" src="www/cooee-sdk-plugin.js">
+        <clobbers target="cordova.plugins.Cooee"/>
     </js-module>
 
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="CooeeSdkPlugin">
-                <param name="android-package" value="org.letscooee.cooeesdk.CooeeSdkPlugin"/>
+                <param name="android-package" value="org.letscooee.cooeesdk.CooeeSDKPlugin"/>
             </feature>
         </config-file>
 
-        <source-file src="src/android/CooeeSdkPlugin.java" target-dir="src/org/letscooee/cooeesdk/CooeeSdkPlugin"/>
+        <source-file src="src/android/CooeeSDKPlugin.java" target-dir="src/org/letscooee/cooeesdk/CooeeSDKPlugin"/>
 
         <framework src="src/android/build.gradle" custom="true" type="gradleReference"></framework>
 

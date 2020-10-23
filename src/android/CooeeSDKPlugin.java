@@ -18,7 +18,7 @@ import android.content.Context;
  *
  * @author Abhishek Taparia
  */
-public class CooeeSdkPlugin extends CordovaPlugin {
+public class CooeeSDKPlugin extends CordovaPlugin {
 
     private CooeeSDK cooeesdk;
 
