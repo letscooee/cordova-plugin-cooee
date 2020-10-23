@@ -14,7 +14,9 @@ import com.letscooee.cooeesdk.CooeeSDK;
 import android.content.Context;
 
 /**
- * This class echoes a string called from JavaScript.
+ * Main wrapper for Cooee Android SDK.
+ *
+ * @author Abhishek Taparia
  */
 public class CooeeSdkPlugin extends CordovaPlugin {
 
@@ -22,8 +24,7 @@ public class CooeeSdkPlugin extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        
-        if (action.equals("init")){
+        if (action.equals("init")) {
             try {
                 this.cooeesdk = CooeeSDK.getDefaultInstance(this.cordova.getActivity().getApplicationContext());
                 callbackContext.success("CooeeSDK Initilized");
@@ -34,21 +35,21 @@ public class CooeeSdkPlugin extends CordovaPlugin {
             return true;
         }
 
-        if(action.equals("sendEvent")){
+        if (action.equals("sendEvent")) {
             String eventName = args.getString(0);
             Map<String, String> eventProperties = toMap(args.getJSONObject(1));
-            
-            try{
-                this.cooeesdk.sendEvent(eventName,eventProperties);
+
+            try {
+                this.cooeesdk.sendEvent(eventName, eventProperties);
                 callbackContext.success("Event Sent");
-            }catch(Exception e){
+            } catch (Exception e) {
                 callbackContext.error(e.toString());
             }
-            
+
             return true;
         }
 
-        if(action.equals("updateUserData")){
+        if (action.equals("updateUserData")) {
             try {
                 Map<String, String> userData = toMap(args.getJSONObject(0));
                 this.cooeesdk.updateUserData(userData);
@@ -56,11 +57,11 @@ public class CooeeSdkPlugin extends CordovaPlugin {
             } catch (Exception e) {
                 callbackContext.error(e.toString());
             }
-            
+
             return true;
         }
 
-        if(action.equals("updateUserProperties")){
+        if (action.equals("updateUserProperties")) {
             try {
                 Map<String, String> userProperties = toMap(args.getJSONObject(0));
                 this.cooeesdk.updateUserProperties(userProperties);
@@ -68,35 +69,35 @@ public class CooeeSdkPlugin extends CordovaPlugin {
             } catch (Exception e) {
                 callbackContext.error(e.toString());
             }
-            
+
             return true;
         }
 
-        if(action.equals("updateUserProfile")){
+        if (action.equals("updateUserProfile")) {
             try {
                 Map<String, String> userData = toMap(args.getJSONObject(0));
                 Map<String, String> userProperties = toMap(args.getJSONObject(1));
-                this.cooeesdk.updateUserProfile(userData,userProperties);
+                this.cooeesdk.updateUserProfile(userData, userProperties);
                 callbackContext.success("User Profile Updated");
             } catch (Exception e) {
                 callbackContext.error(e.toString());
             }
-            
+
             return true;
         }
 
         return false;
     }
 
-    private Map<String, String> toMap(JSONObject jsonobj)  throws JSONException {
+    private Map<String, String> toMap(JSONObject jsonobj) throws JSONException {
         Map<String, String> map = new HashMap<String, String>();
         Iterator<String> keys = jsonobj.keys();
-        while(keys.hasNext()) {
+        while (keys.hasNext()) {
             String key = keys.next();
-            String value = jsonobj.getString(key);  
+            String value = jsonobj.getString(key);
             map.put(key, value);
-        }   
-        
+        }
+
         return map;
     }
 }

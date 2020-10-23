@@ -1,24 +1,25 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="org.letscooee.cooeesdk" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="org.letscooee.cooeesdk" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
     <name>CooeeSdkPlugin</name>
     <js-module name="CooeeSdkPlugin" src="www/CooeeSdkPlugin.js">
-        <clobbers target="cordova.plugins.CooeeSdkPlugin" />
+        <clobbers target="cordova.plugins.CooeeSdkPlugin"/>
     </js-module>
-    <dependency id='cordova-plugin-android-permissions' />
+    <dependency id='cordova-plugin-android-permissions'/>
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="CooeeSdkPlugin">
-                <param name="android-package" value="org.letscooee.cooeesdk.CooeeSdkPlugin" />
+                <param name="android-package" value="org.letscooee.cooeesdk.CooeeSdkPlugin"/>
             </feature>
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
-        <source-file src="src/android/CooeeSdkPlugin.java" target-dir="src/org/letscooee/cooeesdk/CooeeSdkPlugin" />
+        <source-file src="src/android/CooeeSdkPlugin.java" target-dir="src/org/letscooee/cooeesdk/CooeeSdkPlugin"/>
         <framework src="./build.gradle" custom="true" type="gradleReference"></framework>
         <config-file after="uses-permission" parent="/manifest" target="AndroidManifest.xml">
-            <uses-permission android:name="android.permission.ACCESS_COURSE_LOCATION" />
-            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-            <uses-permission android:name="android.permission.BLUETOOTH" />
-            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_COURSE_LOCATION"/>
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+            <uses-permission android:name="android.permission.BLUETOOTH"/>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
         </config-file>
     </platform>
 </plugin>
