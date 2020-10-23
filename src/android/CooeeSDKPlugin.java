@@ -1,5 +1,7 @@
 package org.letscooee.cooeesdk;
 
+import org.apache.cordova.CordovaInterface;
+import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
 
@@ -29,7 +31,7 @@ public class CooeeSDKPlugin extends CordovaPlugin {
         try {
             this.cooeesdk = CooeeSDK.getDefaultInstance(this.cordova.getActivity().getApplicationContext());
         } catch (Exception e) {
-            e.printStackTrace()
+            e.printStackTrace();
         }
     }
 
