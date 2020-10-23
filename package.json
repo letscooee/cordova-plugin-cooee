@@ -13,9 +13,28 @@
             "android"
         ]
     },
-    "keywords": [
-        "ecosystem:cordova"
+    "engines": [
+        {
+            "name": "cordova",
+            "version": ">=9.0.0"
+        }
     ],
+    "keywords": [
+        "Cooee",
+        "Letscooee",
+        "ecosystem:cordova",
+        "cordova-ios",
+        "cordova-android"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/letscooee/cordova-plugin-cooee.git"
+    },
+    "bugs": {
+        "url": "https://github.com/letscooee/cordova-plugin-cooee/issues"
+    },
+    "homepage": "https://github.com/letscooee/cordova-plugin-cooee#readme",
+    "dependencies": {},
     "author": "Cordova wrapper for Cooee SDK",
-    "license": "ISC"
+    "license": "Commercial"
 }

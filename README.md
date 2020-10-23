@@ -1,6 +1,6 @@
 # Cordova Plugin for Cooee SDK
 
-[![npm version](https://badge.fury.io/js/cordova-plugin-cooee.svg)](https://badge.fury.io/js/cordova-plugin-ziggeo)
+[![npm version](https://badge.fury.io/js/cordova-plugin-cooee.svg)](https://badge.fury.io/js/cordova-plugin-cooee)
 
 ## Platforms
 
