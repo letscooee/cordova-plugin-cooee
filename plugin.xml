@@ -17,7 +17,7 @@
 
         <source-file src="src/android/CooeeSdkPlugin.java" target-dir="src/org/letscooee/cooeesdk/CooeeSdkPlugin"/>
 
-        <framework src="./build.gradle" custom="true" type="gradleReference"></framework>
+        <framework src="src/android/build.gradle" custom="true" type="gradleReference"></framework>
 
         <config-file after="uses-permission" parent="/manifest" target="AndroidManifest.xml">
             <uses-permission android:name="android.permission.ACCESS_COURSE_LOCATION"/>

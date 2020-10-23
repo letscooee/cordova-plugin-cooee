@@ -2,6 +2,11 @@
 
 [![npm version](https://badge.fury.io/js/cordova-plugin-cooee.svg)](https://badge.fury.io/js/cordova-plugin-ziggeo)
 
+## Platforms
+
+- Android (Minimum Android 5.5/API level 21)
+- iOS (Coming Soon)
+
 ## Installation
 
 ```shell script
