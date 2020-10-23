@@ -73,19 +73,6 @@ public class CooeeSdkPlugin extends CordovaPlugin {
             return true;
         }
 
-        if (action.equals("updateUserProfile")) {
-            try {
-                Map<String, String> userData = toMap(args.getJSONObject(0));
-                Map<String, String> userProperties = toMap(args.getJSONObject(1));
-                this.cooeesdk.updateUserProfile(userData, userProperties);
-                callbackContext.success("User Profile Updated");
-            } catch (Exception e) {
-                callbackContext.error(e.toString());
-            }
-
-            return true;
-        }
-
         return false;
     }
 

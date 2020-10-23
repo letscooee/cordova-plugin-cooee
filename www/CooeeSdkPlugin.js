@@ -19,8 +19,3 @@ exports.updateUserData = function (userData, success, error) {
 exports.updateUserProperties = function (properties, success, error) {
     exec(success, error, "CooeeSdkPlugin", "updateUserProperties", [properties]);
 };
-
-// Send user data and user properties to the server
-exports.updateUserProfile = function (arg0, arg1, success, error) {
-    exec(success, error, "CooeeSdkPlugin", "updateUserProfile", [arg0, arg1]);
-};

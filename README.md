@@ -46,11 +46,3 @@ cordova plugin add cordova-plugin-cooee
    ```js
    cordova.plugins.CooeeSdkPlugin.updateUserData(<map> userData, success, failure)
    ```
-
-5. `updateUserProfile()`
-
-   This method would update custom user data and user properties and send it to server. It takes two parameter `userData` and`userProperties`.
-
-   ```js
-   cordova.plugins.CooeeSdkPlugin.updateUserProfile(<map> userData,<map> userProperties, success, failure)
-   ```
