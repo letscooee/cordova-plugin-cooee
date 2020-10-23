@@ -14,16 +14,8 @@ cordova plugin add cordova-plugin-cooee
 ```
 
 ## Usage
-
-1. `init()`
-
-   This initialises the plugin. This should be the first method to be called to use the plugin.
-
-   ```js
-   cordova.plugins.CooeeSdkPlugin.init(success, failure);
-   ```
    
-2. `sendEvent()`
+1. Logging events
 
    This method would send custom events to the server. It takes two parameter `eventName` and `eventProperties` 
 
@@ -31,7 +23,7 @@ cordova plugin add cordova-plugin-cooee
    cordova.plugins.CooeeSdkPlugin.sendEvent(<string> eventName, <map> eventProperties, success, failure);
    ```
 
-3. `updateUserProperties()`
+2. Setting user properties
 
    This method would update custom user properties and send it to server. It takes one parameter `userProperties`.
 
@@ -39,7 +31,7 @@ cordova plugin add cordova-plugin-cooee
    cordova.plugins.CooeeSdkPlugin.updateUserProperties(<map> userProperties, success, failure)
    ```
 
-4. `updateUserData()`
+3. Setting user data
 
    This method would update custom user data and send it to server. It takes one parameter `userData`.
 

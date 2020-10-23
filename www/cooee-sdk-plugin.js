@@ -1,10 +1,5 @@
 const exec = require("cordova/exec");
 
-// Initialize the Cooee instance
-exports.init = function (success, error) {
-    exec(success, error, "CooeeSdkPlugin", "init", []);
-};
-
 // Send events to the server
 exports.sendEvent = function (eventName, eventProperties, success, error) {
     exec(success, error, "CooeeSdkPlugin", "sendEvent", [eventName, eventProperties]);

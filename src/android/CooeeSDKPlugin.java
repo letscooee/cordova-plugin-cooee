@@ -23,18 +23,18 @@ public class CooeeSDKPlugin extends CordovaPlugin {
     private CooeeSDK cooeesdk;
 
     @Override
-    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("init")) {
-            try {
-                this.cooeesdk = CooeeSDK.getDefaultInstance(this.cordova.getActivity().getApplicationContext());
-                callbackContext.success("CooeeSDK Initilized");
-            } catch (Exception e) {
-                callbackContext.error(e.toString());
-            }
+    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+        super.initialize(cordova, webView);
 
-            return true;
+        try {
+            this.cooeesdk = CooeeSDK.getDefaultInstance(this.cordova.getActivity().getApplicationContext());
+        } catch (Exception e) {
+            e.printStackTrace()
         }
+    }
 
+    @Override
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("sendEvent")) {
             String eventName = args.getString(0);
             Map<String, String> eventProperties = toMap(args.getJSONObject(1));
