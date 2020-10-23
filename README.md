@@ -9,8 +9,20 @@
 
 ## Installation
 
+### Using Cordova
+
 ```shell script
-cordova plugin add cordova-plugin-cooee
+cordova plugin add cordova-plugin-cooee \
+        --variable COOEE_APP_ID="your-cooee-app-id" \
+        --variable COOEE_APP_SECRET="your-cooee-app-secret" 
+```
+
+### Using Ionic
+
+```shell script
+ionic cordova plugin add cordova-plugin-cooee \
+        --variable COOEE_APP_ID="your-cooee-app-id" \
+        --variable COOEE_APP_SECRET="your-cooee-app-secret" 
 ```
 
 ## Usage

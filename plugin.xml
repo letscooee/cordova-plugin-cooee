@@ -8,11 +8,23 @@
         <clobbers target="cordova.plugins.Cooee"/>
     </js-module>
 
+    <engines>
+        <engine name="cordova" version=">=9.0.0"/>
+    </engines>
+
+    <preference name="COOEE_APP_ID"/>
+    <preference name="COOEE_APP_SECRET"/>
+
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="CooeeSdkPlugin">
                 <param name="android-package" value="org.letscooee.cooeesdk.CooeeSDKPlugin"/>
             </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <meta-data android:name="COOEE_APP_ID" android:value="$COOEE_APP_ID"/>
+            <meta-data android:name="COOEE_APP_SECRET" android:value="$COOEE_APP_SECRET"/>
         </config-file>
 
         <source-file src="src/android/CooeeSDKPlugin.java" target-dir="src/org/letscooee/cooeesdk/CooeeSDKPlugin"/>
