@@ -1,24 +1,24 @@
-var exec = require("cordova/exec");
+const exec = require("cordova/exec");
 
-// Initilize the cooeesdk instance
+// Initialize the Cooee instance
 exports.init = function (success, error) {
-    checkPermessions();
+    checkPermissions();
     exec(success, error, "CooeeSdkPlugin", "init", []);
 };
 
 // Send events to the server
-exports.sendEvent = function (arg0, arg1, success, error) {
-    exec(success, error, "CooeeSdkPlugin", "sendEvent", [arg0, arg1]);
+exports.sendEvent = function (eventName, eventProperties, success, error) {
+    exec(success, error, "CooeeSdkPlugin", "sendEvent", [eventName, eventProperties]);
 };
 
 // Send user data to the server
-exports.updateUserData = function (arg0, success, error) {
-    exec(success, error, "CooeeSdkPlugin", "updateUserData", [arg0]);
+exports.updateUserData = function (userData, success, error) {
+    exec(success, error, "CooeeSdkPlugin", "updateUserData", [userData]);
 };
 
 // Send user properties to the server
-exports.updateUserProperties = function (arg0, success, error) {
-    exec(success, error, "CooeeSdkPlugin", "updateUserProperties", [arg0]);
+exports.updateUserProperties = function (properties, success, error) {
+    exec(success, error, "CooeeSdkPlugin", "updateUserProperties", [properties]);
 };
 
 // Send user data and user properties to the server
@@ -27,18 +27,18 @@ exports.updateUserProfile = function (arg0, arg1, success, error) {
 };
 
 // Check if the application has required permissions
-checkPermessions = function () {
-    var permissions = cordova.plugins.permissions;
-    var perm = [
+checkPermissions = function () {
+    const permissionsPlugin = cordova.plugins.permissions;
+    const perm = [
         "android.permission.ACCESS_COARSE_LOCATION",
-        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
     ];
 
-    permissions.checkPermission(
+    permissionsPlugin.checkPermission(
         "android.permission.ACCESS_COARSE_LOCATION",
         function (status) {
             if (!status.hasPermission) {
-                permissions.requestPermissions(
+                permissionsPlugin.requestPermissions(
                     perm,
                     function (status) {
                         console.log("Permission Granted");
