@@ -6,7 +6,7 @@ allprojects {
 
 
 dependencies {
-    implementation 'com.letscooee.cooee-android-sdk:cooee-android-sdk:0.0.6'
+    implementation 'com.letscooee:cooee-android-sdk:0.0.1'
 }
 
 buildscript {
@@ -14,6 +14,7 @@ buildscript {
         google()
         jcenter()
     }
+    
     dependencies {
         classpath 'com.google.gms:google-services:4.3.3'
     }
