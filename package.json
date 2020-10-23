@@ -1,14 +1,21 @@
 {
-    "name": "org.letscooee.cooeesdk",
-    "version": "0.0.1",
+    "name": "cordova-plugin-cooee",
+    "version": "0.0.0",
     "description": "",
+    "scripts": {
+        "version": "node ./bump-version.js && git add plugin.xml",
+        "preversion": "git add CHANGELOG.md",
+        "postversion": "git push && git push --tags"
+    },
     "cordova": {
-        "id": "org.letscooee.cooeesdk",
-        "platforms": []
+        "id": "cordova-plugin-cooee",
+        "platforms": [
+            "android"
+        ]
     },
     "keywords": [
         "ecosystem:cordova"
     ],
-    "author": "",
+    "author": "Cordova wrapper for Cooee SDK",
     "license": "ISC"
 }
