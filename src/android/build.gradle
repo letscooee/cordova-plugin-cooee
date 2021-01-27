@@ -6,6 +6,7 @@ allprojects {
 
 
 dependencies {
+    // TODO Change the version name after merge
     implementation 'com.letscooee:cooee-android-sdk:0.0.2'
 }
 
