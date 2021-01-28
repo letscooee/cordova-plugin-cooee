@@ -1,6 +1,6 @@
 {
     "name": "cordova-plugin-cooee",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "",
     "scripts": {
         "version": "node ./bump-version.js && git add plugin.xml",
