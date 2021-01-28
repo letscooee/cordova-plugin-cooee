@@ -38,10 +38,9 @@ public class CooeeSDKPlugin extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("sendEvent")) {
-            String eventName = args.getString(0);
-            Map<String, String> eventProperties = toMap(args.getJSONObject(1));
-
             try {
+                String eventName = args.getString(0);
+                Map<String, String> eventProperties = toMap(args.getJSONObject(1));
                 this.cooeesdk.sendEvent(eventName, eventProperties);
                 callbackContext.success("Event Sent");
             } catch (Exception e) {
@@ -68,6 +67,18 @@ public class CooeeSDKPlugin extends CordovaPlugin {
                 Map<String, String> userProperties = toMap(args.getJSONObject(0));
                 this.cooeesdk.updateUserProperties(userProperties);
                 callbackContext.success("User Properties Updated");
+            } catch (Exception e) {
+                callbackContext.error(e.toString());
+            }
+
+            return true;
+        }
+
+        if (action.equals("setCurrentScreen")) {
+            try {
+                String screenName = args.getString(0);
+                this.cooeesdk.setCurrentScreen(screenName);
+                callbackContext.success("Screen Name Updated");
             } catch (Exception e) {
                 callbackContext.error(e.toString());
             }
