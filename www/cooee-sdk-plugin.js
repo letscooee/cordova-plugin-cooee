@@ -2,7 +2,11 @@ const exec = require("cordova/exec");
 
 // Send events to the server
 exports.sendEvent = function (eventName, eventProperties, success, error) {
-    exec(success, error, "CooeeSdkPlugin", "sendEvent", [eventName, eventProperties]);
+    //formatting changes
+    exec(success, error, "CooeeSdkPlugin", "sendEvent", [
+        eventName,
+        eventProperties,
+    ]);
 };
 
 // Send user data to the server
@@ -12,5 +16,13 @@ exports.updateUserData = function (userData, success, error) {
 
 // Send user properties to the server
 exports.updateUserProperties = function (properties, success, error) {
-    exec(success, error, "CooeeSdkPlugin", "updateUserProperties", [properties]);
+    //formatting changes
+    exec(success, error, "CooeeSdkPlugin", "updateUserProperties", [
+        properties,
+    ]);
+};
+
+// Send screen name provided by user to the server
+exports.setCurrentScreen = function (screenName, success, error) {
+    exec(success, error, "CooeeSdkPlugin", "setCurrentScreen", [screenName]);
 };
