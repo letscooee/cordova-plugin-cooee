@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import java.util.*;
 import java.io.*;
 
-import com.letscooee.cooeesdk.CooeeSDK;
+import com.letscooee.CooeeSDK;
 import android.content.Context;
 
 /**
