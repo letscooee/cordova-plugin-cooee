@@ -13,6 +13,7 @@ import java.util.*;
 import java.io.*;
 
 import com.letscooee.CooeeSDK;
+import com.letscooee.utils.InAppNotificationClickListener;
 import android.content.Context;
 
 /**
@@ -20,7 +21,7 @@ import android.content.Context;
  *
  * @author Abhishek Taparia
  */
-public class CooeeSDKPlugin extends CordovaPlugin {
+public class CooeeSDKPlugin extends CordovaPlugin implements InAppNotificationClickListener {
 
     private CooeeSDK cooeesdk;
 
@@ -99,5 +100,17 @@ public class CooeeSDKPlugin extends CordovaPlugin {
         }
 
         return map;
+    }
+
+    @Override
+    public void onInAppButtonClick(HashMap<String, String> payload) {
+        JSONObject jsonPayload = new JSONObject(payload);
+        final String json = "{'customExtras':" + jsonPayload.toString() + "}";
+
+        webView.getView().post(new Runnable() {
+            public void run() {
+                webView.loadUrl("javascript:cordova.fireDocumentEvent('onCooeeInAppButtonClick'," + json + ");");
+            }
+        });
     }
 }
