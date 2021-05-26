@@ -14,6 +14,8 @@ import java.io.*;
 
 import com.letscooee.CooeeSDK;
 import android.content.Context;
+import android.util.Log;
+import com.letscooee.utils.InAppNotificationClickListener;
 
 /**
  * Main wrapper for Cooee Android SDK.
@@ -24,12 +26,27 @@ public class CooeeSDKPlugin extends CordovaPlugin {
 
     private CooeeSDK cooeesdk;
 
+    private InAppNotificationClickListener listener = new InAppNotificationClickListener() {
+        @Override
+        public void onInAppButtonClick(HashMap<String, Object> payload) {
+            JSONObject jsonPayload = new JSONObject(payload);
+            final String json = "{'customExtras':" + jsonPayload.toString() + "}";
+
+            webView.getView().post(new Runnable() {
+                public void run() {
+                    webView.loadUrl("javascript:cordova.fireDocumentEvent('onCooeeInAppButtonClick'," + json + ");");
+                }
+            });
+        }
+    };
+
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
 
         try {
-            this.cooeesdk = CooeeSDK.getDefaultInstance(this.cordova.getActivity().getApplicationContext());
+            this.cooeesdk = CooeeSDK.getDefaultInstance(cordova.getActivity().getApplicationContext());
+            this.cooeesdk.setInAppNotificationButtonListener(this.listener);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -40,7 +57,7 @@ public class CooeeSDKPlugin extends CordovaPlugin {
         if (action.equals("sendEvent")) {
             try {
                 String eventName = args.getString(0);
-                Map<String, String> eventProperties = toMap(args.getJSONObject(1));
+                Map<String, Object> eventProperties = toMap(args.getJSONObject(1));
                 this.cooeesdk.sendEvent(eventName, eventProperties);
                 callbackContext.success("Event Sent");
             } catch (Exception e) {
@@ -52,7 +69,7 @@ public class CooeeSDKPlugin extends CordovaPlugin {
 
         if (action.equals("updateUserData")) {
             try {
-                Map<String, String> userData = toMap(args.getJSONObject(0));
+                Map<String, Object> userData = toMap(args.getJSONObject(0));
                 this.cooeesdk.updateUserData(userData);
                 callbackContext.success("User Data Updated");
             } catch (Exception e) {
@@ -64,7 +81,7 @@ public class CooeeSDKPlugin extends CordovaPlugin {
 
         if (action.equals("updateUserProperties")) {
             try {
-                Map<String, String> userProperties = toMap(args.getJSONObject(0));
+                Map<String, Object> userProperties = toMap(args.getJSONObject(0));
                 this.cooeesdk.updateUserProperties(userProperties);
                 callbackContext.success("User Properties Updated");
             } catch (Exception e) {
@@ -89,12 +106,12 @@ public class CooeeSDKPlugin extends CordovaPlugin {
         return false;
     }
 
-    private Map<String, String> toMap(JSONObject jsonobj) throws JSONException {
-        Map<String, String> map = new HashMap<String, String>();
+    private Map<String, Object> toMap(JSONObject jsonobj) throws JSONException {
+        Map<String, Object> map = new HashMap<String, Object>();
         Iterator<String> keys = jsonobj.keys();
         while (keys.hasNext()) {
             String key = keys.next();
-            String value = jsonobj.getString(key);
+            Object value = jsonobj.getString(key);
             map.put(key, value);
         }
 
