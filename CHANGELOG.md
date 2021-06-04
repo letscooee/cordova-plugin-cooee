@@ -16,7 +16,7 @@ As our new library works with `androidx` libraries you will need to add `cordova
 We also added In-App trigger where we provide data to the app when youser performs any action on trigger. To accept data you will need to add following code in your project.
 
 ```js
-document.addEventListener('onCooeeInAppButtonClick', this.onCooeeInAppButtonClick, false); // optional, to check if Inbox button was clicked with custom payload
+document.addEventListener('onCooeeInAppButtonClick', this.onCooeeInAppButtonClick, false); // optional, to check if Un-App Trigger button was clicked with custom payload
 
 function onCooeeInAppButtonClick: function(e) {
     console.log(e.customExtras);
