@@ -111,7 +111,7 @@ public class CooeeSDKPlugin extends CordovaPlugin {
         Iterator<String> keys = jsonobj.keys();
         while (keys.hasNext()) {
             String key = keys.next();
-            Object value = jsonobj.getString(key);
+            Object value = jsonobj.get(key);
             map.put(key, value);
         }
 
