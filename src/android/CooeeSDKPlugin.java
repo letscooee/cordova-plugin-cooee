@@ -15,7 +15,7 @@ import java.io.*;
 import com.letscooee.CooeeSDK;
 import android.content.Context;
 import android.util.Log;
-import com.letscooee.utils.InAppNotificationClickListener;
+import com.letscooee.utils.CooeeCTAListener;
 
 /**
  * Main wrapper for Cooee Android SDK.
@@ -26,15 +26,15 @@ public class CooeeSDKPlugin extends CordovaPlugin {
 
     private CooeeSDK cooeesdk;
 
-    private InAppNotificationClickListener listener = new InAppNotificationClickListener() {
+    private CooeeCTAListener listener = new CooeeCTAListener() {
         @Override
-        public void onInAppButtonClick(HashMap<String, Object> payload) {
+        public void onResponse(HashMap<String, Object> payload) {
             JSONObject jsonPayload = new JSONObject(payload);
             final String json = "{'customExtras':" + jsonPayload.toString() + "}";
 
             webView.getView().post(new Runnable() {
                 public void run() {
-                    webView.loadUrl("javascript:cordova.fireDocumentEvent('onCooeeInAppButtonClick'," + json + ");");
+                    webView.loadUrl("javascript:cordova.fireDocumentEvent('onCooeeCTAListener'," + json + ");");
                 }
             });
         }
@@ -46,7 +46,7 @@ public class CooeeSDKPlugin extends CordovaPlugin {
 
         try {
             this.cooeesdk = CooeeSDK.getDefaultInstance(cordova.getActivity().getApplicationContext());
-            this.cooeesdk.setInAppNotificationButtonListener(this.listener);
+            this.cooeesdk.setCTAListener(this.listener);
         } catch (Exception e) {
             e.printStackTrace();
         }

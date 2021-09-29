@@ -5,13 +5,13 @@ allprojects {
 }
 
 dependencies {
-    api 'com.letscooee:cooee-android-sdk:0.2.11'
+    api 'com.letscooee:cooee-android-sdk:1.0.2'
 }
 
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     
     dependencies {
