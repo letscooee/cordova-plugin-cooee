@@ -2,23 +2,25 @@
 
 # 0.0.6
 
-1. Using Android SDK v0.2.11
-2. Added In-Trigger
+1. Using Android SDK v1.0.2
 
 ### Required Changes
 
-As our new library works with `androidx` libraries you will need to add `cordova-plugin-androidx` plugin to your project. Run following command before you build your project.
+As our new library works with `androidx` libraries you will need to add `androidx` support to your project. Add following tag in `config.xml`.
 
-```diff
-    cordova plugin add cordova-plugin-androidx
+```xml
+<platform name="android">
+    ...
+    <preference name="AndroidXEnabled" value="true" />
+</platform>
 ```
 
-We also added In-App trigger where we provide data to the app when youser performs any action on trigger. To accept data you will need to add following code in your project.
+We also added In-App trigger where we provide data to the app when user performs any action on trigger. To accept data you will need to add following code in your project.
 
 ```js
-document.addEventListener('onCooeeInAppButtonClick', this.onCooeeInAppButtonClick, false); // optional, to check if Un-App Trigger button was clicked with custom payload
+document.addEventListener('onCooeeCTAListener', this.onCooeeCTAListener, false);
 
-function onCooeeInAppButtonClick: function(e) {
+function onCooeeCTAListener: function(e) {
     console.log(e.customExtras);
 },
 

@@ -55,10 +55,10 @@ ionic cordova plugin add cordova-plugin-cooee \
     
     Add `document.addEventListener()` to accept data which we send when user perform any action on In-App Trigger.
     ```js
-    document.addEventListener('onCooeeInAppButtonClick', this.onCooeeInAppButtonClick, false);
+    document.addEventListener('onCooeeCTAListener', this.onCooeeCTAListener, false);
 
 
-    function onCooeeInAppButtonClick: function(e) {
+    function onCooeeCTAListener: function(e) {
         console.log(e.customExtras);
     },
     ```
