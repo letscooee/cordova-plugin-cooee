@@ -16,6 +16,7 @@ import com.letscooee.CooeeSDK;
 import android.content.Context;
 import android.util.Log;
 import com.letscooee.utils.CooeeCTAListener;
+import com.google.gson.Gson;
 
 /**
  * Main wrapper for Cooee Android SDK.
@@ -29,12 +30,12 @@ public class CooeeSDKPlugin extends CordovaPlugin {
     private CooeeCTAListener listener = new CooeeCTAListener() {
         @Override
         public void onResponse(HashMap<String, Object> payload) {
-            JSONObject jsonPayload = new JSONObject(payload);
-            final String json = "{'customExtras':" + jsonPayload.toString() + "}";
-
+            HashMap<String, Object> response=new HashMap<String,Object>();
+            response.put("customExtras",payload);
+            
             webView.getView().post(new Runnable() {
                 public void run() {
-                    webView.loadUrl("javascript:cordova.fireDocumentEvent('onCooeeCTAListener'," + json + ");");
+                    webView.loadUrl("javascript:cordova.fireDocumentEvent('onCooeeCTAListener'," + new Gson().toJson(response) + ");");
                 }
             });
         }
@@ -109,9 +110,10 @@ public class CooeeSDKPlugin extends CordovaPlugin {
     private Map<String, Object> toMap(JSONObject jsonObject) throws JSONException {
         Map<String, Object> map = new HashMap<String, Object>();
         Iterator<String> keys = jsonObject.keys();
-        
+
         while (keys.hasNext()) {
-            map.put(keys.next(), jsonObject.get(key));
+            String key = keys.next();
+            map.put(key, jsonObject.get(key));
         }
 
         return map;
