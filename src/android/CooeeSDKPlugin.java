@@ -27,15 +27,12 @@ public class CooeeSDKPlugin extends CordovaPlugin {
 
     private CooeeSDK cooeesdk;
 
-    private CooeeCTAListener listener = new CooeeCTAListener() {
+    private final CooeeCTAListener listener = new CooeeCTAListener() {
         @Override
         public void onResponse(HashMap<String, Object> payload) {
-            HashMap<String, Object> response=new HashMap<String,Object>();
-            response.put("customExtras",payload);
-            
             webView.getView().post(new Runnable() {
                 public void run() {
-                    webView.loadUrl("javascript:cordova.fireDocumentEvent('onCooeeCTAListener'," + new Gson().toJson(response) + ");");
+                    webView.loadUrl("javascript:cordova.fireDocumentEvent('onCooeeCTAListener'," + new Gson().toJson(payload) + ");");
                 }
             });
         }
