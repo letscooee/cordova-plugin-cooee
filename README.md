@@ -58,7 +58,7 @@ ionic cordova plugin add cordova-plugin-cooee \
     document.addEventListener('onCooeeCTAListener', this.onCooeeCTAListener, false);
 
 
-    function onCooeeCTAListener = function(response) {
+    function onCooeeCTAListener(response) {
         console.log(response);
     },
     ```
