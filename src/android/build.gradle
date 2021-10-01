@@ -1,6 +1,6 @@
 allprojects {
     repositories {
-        maven { url "https://letscooee.jfrog.io/artifactory/default-maven-local" }
+        maven { url 'https://letscooee.jfrog.io/artifactory/default-maven-local' }
     }
 }
 
