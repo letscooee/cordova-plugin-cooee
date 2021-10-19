@@ -26,40 +26,70 @@ ionic cordova plugin add cordova-plugin-cooee \
 ```
 
 ## Usage
-   
-1. Logging events
 
-   This method would send custom events to the server. It takes two parameter `eventName` and `eventProperties` 
+### 1. Track mandatory Events
 
-   ```js
-   cordova.plugins.Cooee.sendEvent(<string> eventName, <map> eventProperties, success, failure);
-   ```
+Once you install the plugin, Cooee will automatically start tracking events. Apart from these, you must track mandatory
+events as well per your app domain which are defined in the document. For example-
 
-2. Setting user properties
+```js
+const props = {
+    id: 'FOO-B076H19JPJ',
+    name: 'Multisport Shoe'
+};
 
-   This method would update custom user properties and send it to server. It takes one parameter `userProperties`.
+cordova.plugins.Cooee.sendEvent("Add To Cart", props);
+```
 
-   ```js
-   cordova.plugins.Cooee.updateUserProperties(<map> userProperties, success, failure)
-   ```
+### 2. Setting user properties
 
-3. Setting user data
+As the user launches the app for the first time, Cooee will create a user profile for them. By default, we add multiple
+properties for a particular user which you can see in System Default User Properties. Along with these default
+properties, additional custom attributes/properties can also be shared. We encourage mobile apps to share all properties
+for better machine learning modelling.
 
-   This method would update custom user data and send it to server. It takes one parameter `userData`.
+```js
+const userProps = {
+    loggedIn: true,
+    foo: 'bar'
+};
 
-   ```js
-   cordova.plugins.Cooee.updateUserData(<map> userData, success, failure)
-   ```
+cordova.plugins.Cooee.updateUserProperties(userProps);
+```
 
-4. In-App Trigger Button Click Callback
-    
-    Add `document.addEventListener()` to accept data which we send when user perform any action on In-App Trigger.
-    ```js
-    document.addEventListener('onCooeeCTAListener', this.onCooeeCTAListener, false);
+### 3. Setting user data
 
+This method would update custom user data and send it to server. It takes one parameter `userData`.
 
-    function onCooeeCTAListener(response) {
-        console.log(response);
-    },
-    ```
+```js
+const userData = {
+    name: 'John Doe',
+    email: 'john@example.com',
+    mobile: '9876543210'
+};
+
+cordova.plugins.Cooee.updateUserData(userData);
+```
+
+### 4. In-App Trigger Button Click Callback
+
+Cooee plugin supports callback on the click of in-app notification & push notifications actions by returning a map of 
+key value pairs. Add `document.addEventListener()` to accept data which we send when user perform any action on 
+In-App Trigger.
+
+```js
+document.addEventListener('onCooeeCTAListener', this.onCooeeCTAListener, false);
+
+function onCooeeCTAListener(payload) {
+    if (!payload) {
+        return;
+    }
+
+    if (payload.get("actionType") == "VIEW_ITEM") {
+        // Use payload.get("item")
+    } else if (payload.get("actionType") == "GO_TO_SCREEN") {
+        // Use payload.get("screenName")
+    }
+}
+```
 
