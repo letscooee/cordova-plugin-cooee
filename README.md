@@ -1,10 +1,10 @@
 # Cordova Plugin for Cooee SDK
 
-[![npm version](https://badge.fury.io/js/cordova-plugin-cooee.svg)](https://badge.fury.io/js/cordova-plugin-cooee)
+[![npm version](https://badge.fury.io/js/@letscooee%2Fcordova-plugin.svg)](https://badge.fury.io/js/@letscooee%2Fcordova-plugin)
 
 ## Platforms
 
-- Android (Minimum Android 5.5/API level 21)
+- Android (Minimum Android 5.0/API level 21)
 - iOS (Coming Soon)
 
 ## Installation
@@ -12,7 +12,7 @@
 ### Using Cordova
 
 ```shell script
-cordova plugin add cordova-plugin-cooee \
+cordova plugin add @letscooee/cordova-plugin \
         --variable COOEE_APP_ID="your-cooee-app-id" \
         --variable COOEE_APP_SECRET="your-cooee-app-secret" 
 ```
@@ -20,7 +20,7 @@ cordova plugin add cordova-plugin-cooee \
 ### Using Ionic
 
 ```shell script
-ionic cordova plugin add cordova-plugin-cooee \
+ionic cordova plugin add @letscooee/cordova-plugin \
         --variable COOEE_APP_ID="your-cooee-app-id" \
         --variable COOEE_APP_SECRET="your-cooee-app-secret" 
 ```
