@@ -9,8 +9,8 @@ stages:
 Release on NPM:
     stage: deploy
     environment:
-        name: Prod
+        name: production
     script:
-        - npm publish
+        - npm publish --access public
     only:
         - tags
