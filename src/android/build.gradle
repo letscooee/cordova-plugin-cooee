@@ -1,17 +1,17 @@
 allprojects {
     repositories {
-        maven{url  "https://dl.bintray.com/wizpanda/maven"}
+        maven { url 'https://letscooee.jfrog.io/artifactory/default-maven-local' }
     }
 }
 
 dependencies {
-    implementation 'com.letscooee:cooee-android-sdk:0.1.1'
+    api 'com.letscooee:cooee-android-sdk:1.0.2'
 }
 
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     
     dependencies {

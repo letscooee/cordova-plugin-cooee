@@ -1,0 +1,16 @@
+image: node:latest
+
+before_script:
+    - cat $NPM_CREDENTIAL > ~/.npmrc
+
+stages:
+    - deploy
+
+Release on NPM:
+    stage: deploy
+    environment:
+        name: Prod
+    script:
+        - npm publish
+    only:
+        - tags
