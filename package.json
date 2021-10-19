@@ -1,5 +1,5 @@
 {
-    "name": "cordova-plugin-cooee",
+    "name": "@letscooee/cordova-plugin",
     "version": "0.0.5",
     "description": "",
     "scripts": {
@@ -8,7 +8,7 @@
         "postversion": "git push && git push --tags"
     },
     "cordova": {
-        "id": "cordova-plugin-cooee",
+        "id": "@letscooee/cordova-plugin",
         "platforms": [
             "android"
         ]
