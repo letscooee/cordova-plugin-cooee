@@ -1,7 +1,7 @@
 {
     "name": "@letscooee/cordova-plugin",
-    "version": "0.0.5",
-    "description": "",
+    "version": "0.0.6",
+    "description": "Hyperpersonalised Mobile/Web App Re-Engagement via Machine Learning",
     "scripts": {
         "version": "node ./bump-version.js && git add plugin.xml",
         "preversion": "git add CHANGELOG.md",
@@ -15,10 +15,11 @@
     },
     "engines": {
         "cordovaDependencies": {
-            ">0.0.5":  { "cordova-android": ">9.0.0" }
+            ">0.0.5": {
+                "cordova-android": ">9.0.0"
+            }
         }
-    }
-    ,
+    },
     "keywords": [
         "Cooee",
         "Letscooee",
@@ -35,6 +36,6 @@
     },
     "homepage": "https://github.com/letscooee/cordova-plugin-cooee#readme",
     "dependencies": {},
-    "author": "Cordova wrapper for Cooee SDK",
+    "author": "Letscooe <shoutout@letscooee.com>",
     "license": "Commercial"
 }
