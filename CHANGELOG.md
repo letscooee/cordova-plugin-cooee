@@ -1,5 +1,10 @@
 # Change Log
 
+# 1.0.0
+
+1. Support of iOS via v1.3.4
+2. Upgrade to Android SDK v1.1.0
+
 # 0.0.6
 
 1. Using Android SDK v1.0.2
