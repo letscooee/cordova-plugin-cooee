@@ -10,7 +10,8 @@
     "cordova": {
         "id": "@letscooee/cordova-plugin",
         "platforms": [
-            "android"
+            "android",
+            "ios"
         ]
     },
     "engines": {
