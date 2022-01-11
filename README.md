@@ -5,7 +5,7 @@
 ## Platforms
 
 - Android (Minimum Android 5.0/API level 21)
-- iOS (Coming Soon)
+- iOS (Minimum deployment target iOS 13)
 
 ## Installation
 
@@ -13,17 +13,22 @@
 
 ```shell script
 cordova plugin add @letscooee/cordova-plugin \
-        --variable COOEE_APP_ID="your-cooee-app-id" \
-        --variable COOEE_APP_SECRET="your-cooee-app-secret" 
+        --variable COOEE_APP_ID="MY_COOEE_APP_ID" \
+        --variable COOEE_APP_SECRET="MY_COOEE_APP_SECRET" 
 ```
 
 ### Using Ionic
 
 ```shell script
 ionic cordova plugin add @letscooee/cordova-plugin \
-        --variable COOEE_APP_ID="your-cooee-app-id" \
-        --variable COOEE_APP_SECRET="your-cooee-app-secret" 
+        --variable COOEE_APP_ID="MY_COOEE_APP_ID" \
+        --variable COOEE_APP_SECRET="MY_COOEE_APP_SECRET" 
 ```
+
+<br></br>
+
+<span style="color:red">**Note:**</span> Replace `MY_COOEE_APP_ID` & `MY_COOEE_APP_SECRET` with the app id & secret
+given to you separately
 
 ## Usage
 
