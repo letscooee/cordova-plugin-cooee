@@ -27,7 +27,7 @@ ionic cordova plugin add @letscooee/cordova-plugin \
 
 <br></br>
 
-<span style="color:red">**Note:**</span> Replace `MY_COOEE_APP_ID` & `MY_COOEE_APP_SECRET` with the app id & secret
+**Note:** Replace `MY_COOEE_APP_ID` & `MY_COOEE_APP_SECRET` with the app id & secret
 given to you separately
 
 ## Usage
