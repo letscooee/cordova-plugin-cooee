@@ -1,100 +1,28 @@
 # Cordova Plugin for Cooee SDK
 
-[![npm version](https://badge.fury.io/js/@letscooee%2Fcordova-plugin.svg)](https://badge.fury.io/js/@letscooee%2Fcordova-plugin)
+![npm](https://img.shields.io/npm/v/@letscooee/cordova-plugin)
+
+## What is Cooee?
+
+Let’s Cooee powers hyper-personalized and real time engagements for mobile apps based on machine learning. The SaaS platform, hosted on
+cloud infrastructure processes millions of user transactions and data attributes to create unique and contextual user engagement
+triggers for end users with simple SDK integration that requires no coding at mobile app level.
+
+For more information visit our [website](https://www.letscooee.com/) and [documentation](https://docs.letscooee.com/developers/ios/quickstart).
+
+## Features
+
+1. Plug and Play - Plugin is plug and play for mobile applications. That means it needs to be initialized with the Application Context, and it
+   will work automatically in the background.
+2. Independent of Application - Plugin is independent of the application. It will collect data points with zero interference from/to the
+   applications. Although applications can send additional data points (if required) to the Plugin using API’s.
+3. Rendering engagement triggers - Plugin will render the campaign trigger at real-time with the help of server http calls.
 
 ## Platforms
 
-- Android (Minimum Android 5.0/API level 21)
+- Android (Minimum Android 5.0 / API level 21)
 - iOS (Minimum deployment target iOS 13)
 
-## Installation
+## Installation & Uses
 
-### Using Cordova
-
-```shell script
-cordova plugin add @letscooee/cordova-plugin \
-        --variable COOEE_APP_ID="MY_COOEE_APP_ID" \
-        --variable COOEE_APP_SECRET="MY_COOEE_APP_SECRET" 
-```
-
-### Using Ionic
-
-```shell script
-ionic cordova plugin add @letscooee/cordova-plugin \
-        --variable COOEE_APP_ID="MY_COOEE_APP_ID" \
-        --variable COOEE_APP_SECRET="MY_COOEE_APP_SECRET" 
-```
-
-<br></br>
-
-**Note:** Replace `MY_COOEE_APP_ID` & `MY_COOEE_APP_SECRET` with the app id & secret
-given to you separately
-
-## Usage
-
-### 1. Track mandatory Events
-
-Once you install the plugin, Cooee will automatically start tracking events. Apart from these, you must track mandatory
-events as well per your app domain which are defined in the document. For example-
-
-```js
-const props = {
-    id: 'FOO-B076H19JPJ',
-    name: 'Multisport Shoe'
-};
-
-cordova.plugins.Cooee.sendEvent("Add To Cart", props);
-```
-
-### 2. Setting user properties
-
-As the user launches the app for the first time, Cooee will create a user profile for them. By default, we add multiple
-properties for a particular user which you can see in System Default User Properties. Along with these default
-properties, additional custom attributes/properties can also be shared. We encourage mobile apps to share all properties
-for better machine learning modelling.
-
-```js
-const userProps = {
-    loggedIn: true,
-    foo: 'bar'
-};
-
-cordova.plugins.Cooee.updateUserProperties(userProps);
-```
-
-### 3. Setting user data
-
-This method would update custom user data and send it to server. It takes one parameter `userData`.
-
-```js
-const userData = {
-    name: 'John Doe',
-    email: 'john@example.com',
-    mobile: '9876543210'
-};
-
-cordova.plugins.Cooee.updateUserData(userData);
-```
-
-### 4. In-App Trigger Button Click Callback
-
-Cooee plugin supports callback on the click of in-app notification & push notifications actions by returning a map of 
-key value pairs. Add `document.addEventListener()` to accept data which we send when user perform any action on 
-In-App Trigger.
-
-```js
-document.addEventListener('onCooeeCTAListener', this.onCooeeCTAListener, false);
-
-function onCooeeCTAListener(payload) {
-    if (!payload) {
-        return;
-    }
-
-    if (payload.get("actionType") == "VIEW_ITEM") {
-        // Use payload.get("item")
-    } else if (payload.get("actionType") == "GO_TO_SCREEN") {
-        // Use payload.get("screenName")
-    }
-}
-```
-
+For detailed installation & uses, Refer [Cordova](https://docs.letscooee.com/developers/cordova/quickstart) documentation.
