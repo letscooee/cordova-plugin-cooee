@@ -9,7 +9,6 @@
         <engine name="cordova" version=">=9.0.0"/>
     </engines>
     <preference name="COOEE_APP_ID"/>
-    <preference name="COOEE_APP_SECRET"/>
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="CooeeSdkPlugin">
@@ -18,7 +17,6 @@
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <meta-data android:name="COOEE_APP_ID" android:value="$COOEE_APP_ID"/>
-            <meta-data android:name="COOEE_APP_SECRET" android:value="$COOEE_APP_SECRET"/>
         </config-file>
         <source-file src="src/android/CooeeSDKPlugin.java" target-dir="src/org/letscooee/cooeesdk/CooeeSDKPlugin"/>
         <framework src="src/android/build.gradle" custom="true" type="gradleReference"/>
@@ -49,9 +47,6 @@
 
         <config-file target="*-Info.plist" parent="COOEE_APP_ID">
             <string>$COOEE_APP_ID</string>
-        </config-file>
-        <config-file target="*-Info.plist" parent="COOEE_APP_SECRET">
-            <string>$COOEE_APP_SECRET</string>
         </config-file>
         <podspec>
             <config>
