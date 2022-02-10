@@ -1,5 +1,9 @@
 # Change Log
 
+# 1.0.2
+
+1. Remove the need of `COOEE_APP_SECRET`.
+
 # 1.0.1
 
 1. Upgrade to Android SDK v1.1.0

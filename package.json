@@ -1,6 +1,6 @@
 {
     "name": "@letscooee/cordova-plugin",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Hyperpersonalised Mobile/Web App Re-Engagement via Machine Learning",
     "scripts": {
         "version": "node ./bump-version.js && git add plugin.xml",
