@@ -1,5 +1,13 @@
 # Change Log
 
+# 1.3.0
+
+1. Add hooks to configure `Swift_Version` and Add `Notification Service`.
+2. Using Android SDK v1.3.3.
+3. Using iOS SDK v1.3.10.
+4. Expose `updateUserProfile` method.
+5. Deprecate `updateUserData` and `updateUserProperties` methods.
+
 # 1.0.2
 
 1. Remove the need of `COOEE_APP_SECRET`.
