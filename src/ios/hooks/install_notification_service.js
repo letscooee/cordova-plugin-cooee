@@ -38,7 +38,7 @@ module.exports = function (context) {
      */
     function updateSource(appId, path) {
         const fileContent = fs.readFileSync(path, 'utf8');
-        const updatedFileContent = fileContent.replace('5f9136107d618d7d123cc118', appId);
+        const updatedFileContent = fileContent.replace('APP_ID', appId);
         fs.writeFileSync(path, updatedFileContent, 'utf8');
 
     }

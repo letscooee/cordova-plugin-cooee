@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.letscooee.5f9136107d618d7d123cc118</string>
+		<string>group.com.letscooee.APP_ID</string>
 	</array>
 </dict>
 </plist>
