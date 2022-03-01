@@ -55,9 +55,15 @@ public class CooeeSDKPlugin extends CordovaPlugin {
         if (action.equals("sendEvent")) {
             try {
                 String eventName = args.getString(0);
-                Map<String, Object> eventProperties = toMap(args.getJSONObject(1));
-                this.cooeesdk.sendEvent(eventName, eventProperties);
-                callbackContext.success("Event Sent");
+                JSONObject jsonEventProperties = args.getJSONObject(1);
+                if (jsonEventProperties == null){
+                    this.cooeesdk.sendEvent(eventName);
+                }else {
+                    Map<String, Object> eventProperties = toMap(jsonEventProperties);
+                    this.cooeesdk.sendEvent(eventName, eventProperties);
+                }
+
+                callbackContext.success("Event sent");
             } catch (Exception e) {
                 callbackContext.error(e.toString());
             }
@@ -65,23 +71,17 @@ public class CooeeSDKPlugin extends CordovaPlugin {
             return true;
         }
 
-        if (action.equals("updateUserData")) {
+        if (action.equals("updateUserProfile")) {
             try {
-                Map<String, Object> userData = toMap(args.getJSONObject(0));
-                this.cooeesdk.updateUserData(userData);
-                callbackContext.success("User Data Updated");
-            } catch (Exception e) {
-                callbackContext.error(e.toString());
-            }
+                JSONObject jsonUserProfile = args.getJSONObject(0);
 
-            return true;
-        }
+                if (jsonUserProfile == null){
+                    callbackContext.error("User profile cannot be null");
+                }
 
-        if (action.equals("updateUserProperties")) {
-            try {
-                Map<String, Object> userProperties = toMap(args.getJSONObject(0));
-                this.cooeesdk.updateUserProperties(userProperties);
-                callbackContext.success("User Properties Updated");
+                Map<String, Object> userProfile = toMap(jsonUserProfile);
+                this.cooeesdk.updateUserProfile(userProfile);
+                callbackContext.success("User profile updated");
             } catch (Exception e) {
                 callbackContext.error(e.toString());
             }
@@ -93,7 +93,7 @@ public class CooeeSDKPlugin extends CordovaPlugin {
             try {
                 String screenName = args.getString(0);
                 this.cooeesdk.setCurrentScreen(screenName);
-                callbackContext.success("Screen Name Updated");
+                callbackContext.success("Screen name updated");
             } catch (Exception e) {
                 callbackContext.error(e.toString());
             }
