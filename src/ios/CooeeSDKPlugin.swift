@@ -7,30 +7,32 @@ var cooeesdk: CooeeSDK?
 override func pluginInitialize() {
     super.pluginInitialize()
     AppController.configure()
-    cooeesdk = CooeeSDK.getInstance()
+    DispatchQueue.main.async {
+       self.cooeesdk = CooeeSDK.getInstance()
+       self.cooeesdk?.setWrapper("cordova")
+    }
 }
 
 @objc(sendEvent:)
 func sendEvent(command: CDVInvokedUrlCommand) {
     let eventName = command.argument(at:0) as! String
-    let eventProperties = command.argument(at:1) as! [String:Any]
+    let eventProperties = command.argument(at:1) as? [String:Any]
     do{
-        try self.cooeesdk?.sendEvent(eventName: eventName,eventProperties: eventProperties);
+        if let eventProperties = eventProperties {
+			try cooeesdk?.sendEvent(eventName: eventName, eventProperties: eventProperties)
+		} else {
+			try cooeesdk?.sendEvent(eventName: eventName)
+		}
     }catch{}
     //self.commandDelegate!.sendPluginResult("Event Sent");
 }
 
-@objc(updateUserData:)
-func updateUserData(command: CDVInvokedUrlCommand) {
+@objc(updateUserProfile:)
+func updateUserProfile(command: CDVInvokedUrlCommand) {
     let userData = command.argument(at:0) as! [String:Any]
-    self.cooeesdk?.updateUserData(userData: userData)
-}
-
-@objc(updateUserProperties:)
-func updateUserProperties(command: CDVInvokedUrlCommand) {
-  let userData = command.argument(at:0) as! [String:Any]
-    self.cooeesdk?.updateUserProperties(userProperties: userData);
-    //commandDelegate!.sendPluginResult("User Data Updated");
+    do{
+        try self.cooeesdk?.updateUserProfile(userData)
+    }catch{}
 }
 
 @objc(setCurrentScreen:)
