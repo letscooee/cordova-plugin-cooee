@@ -9,6 +9,7 @@
         <engine name="cordova" version=">=9.0.0"/>
     </engines>
     <preference name="COOEE_APP_ID"/>
+
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="CooeeSdkPlugin">
@@ -25,36 +26,65 @@
             <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
             <uses-permission android:name="android.permission.BLUETOOTH"/>
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.CAMERA"/>
         </config-file>
     </platform>
+
     <platform name="ios">
-        <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
         <config-file target="config.xml" parent="/*">
             <feature name="CooeeSDKPlugin">
                 <param name="ios-package" value="CooeeSDKPlugin"/>
                 <param name="onload" value="true"/>
             </feature>
             <preference name="deployment-target" value="13.0"/>
+            <preference name="SwiftVersion" value="5"/>
+            <preference name="UseSwiftLanguageVersion" value="5"/>
         </config-file>
         <!-- <js-module name="CooeeSDKPlugin" src="cooee-sdk-plugin.js">
             <clobbers target="CooeeSDKPlugin" />
         </js-module> -->
-        <!-- <framework src="CooeeSDK" type="podspec" spec="~> 1.2.5" /> -->
+        <config-file target="*-Info.plist" parent="COOEE_APP_ID">
+            <string>$COOEE_APP_ID</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="UIBackgroundModes">
+            <array>
+                <string>fetch</string>
+                <string>processing</string>
+                <string>remote-notification</string>
+            </array>
+        </config-file>
+        <config-file target="*/Entitlements-Debug.plist" parent="aps-environment">
+            <string>development</string>
+        </config-file>
+        <config-file target="*/Entitlements-Release.plist" parent="aps-environment">
+            <string>production</string>
+        </config-file>
+        <config-file target="*/Entitlements-Debug.plist" parent="com.apple.security.application-groups">
+            <array>
+                <string>group.com.letscooee.$COOEE_APP_ID</string>
+            </array>
+        </config-file>
+        <config-file target="*/Entitlements-Release.plist" parent="com.apple.security.application-groups">
+            <array>
+                <string>group.com.letscooee.$COOEE_APP_ID</string>
+            </array>
+        </config-file>
+
         <header-file src="src/ios/AppDelegate+CooeeSDKPlugin.h"/>
         <source-file src="src/ios/AppDelegate+CooeeSDKPlugin.m"/>
         <header-file src="src/ios/CooeeSDKPlugin.h"/>
         <source-file src="src/ios/CooeeSDKPlugin.swift"/>
 
-        <config-file target="*-Info.plist" parent="COOEE_APP_ID">
-            <string>$COOEE_APP_ID</string>
-        </config-file>
         <podspec>
-            <config>
-                <source url="https://github.com/CocoaPods/Specs.git"/>
-            </config>
             <pods use-frameworks="true">
-                <pod name="CooeeSDK" spec="~> 1.3.7"/>
+                <pod name="CooeeSDK" spec="~> 1.3.10" swift-version="5.0"/>
             </pods>
         </podspec>
+
+        <hook type="after_platform_add" src="src/ios/hooks/install_notification_service.js"/>
+        <hook type="after_plugin_add" src="src/ios/hooks/install_notification_service.js"/>
+        <hook type="before_plugin_add" src="src/ios/hooks/add_swift-support.js"/>
+        <hook type="before_plugin_install" src="src/ios/hooks/add_swift-support.js"/>
+        <hook type="before_prepare" src="src/ios/hooks/add_swift-support.js"/>
     </platform>
 </plugin>
