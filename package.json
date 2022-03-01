@@ -17,7 +17,8 @@
     "engines": {
         "cordovaDependencies": {
             ">0.0.5": {
-                "cordova-android": ">9.0.0"
+                "cordova-android": ">9.0.0",
+                "cordova-ios": ">6.0.0"
             }
         }
     },
@@ -36,7 +37,20 @@
         "url": "https://github.com/letscooee/cordova-plugin-cooee/issues"
     },
     "homepage": "https://github.com/letscooee/cordova-plugin-cooee#readme",
-    "dependencies": {},
+    "dependencies": {
+        "glob": "^7.2.0",
+        "semver": "^7.3.5",
+        "xcode": "^3.0.1"
+    },
+    "devDependencies": {
+        "acorn": "^6.1.1",
+        "eslint": "^5.15.3",
+        "eslint-config-standard": "^12.0.0",
+        "eslint-plugin-import": "^2.16.0",
+        "eslint-plugin-node": "^8.0.1",
+        "eslint-plugin-promise": "^4.0.1",
+        "eslint-plugin-standard": "^4.0.0"
+    },
     "author": "Letscooe <shoutout@letscooee.com>",
     "license": "Commercial"
 }
