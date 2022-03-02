@@ -60,9 +60,10 @@ public class CooeeSDKPlugin extends CordovaPlugin {
             try {
                 String eventName = args.getString(0);
                 JSONObject jsonEventProperties = args.getJSONObject(1);
-                if (jsonEventProperties == null){
+
+                if (jsonEventProperties == null) {
                     this.cooeesdk.sendEvent(eventName);
-                }else {
+                } else {
                     Map<String, Object> eventProperties = toMap(jsonEventProperties);
                     this.cooeesdk.sendEvent(eventName, eventProperties);
                 }
@@ -79,7 +80,7 @@ public class CooeeSDKPlugin extends CordovaPlugin {
             try {
                 JSONObject jsonUserProfile = args.getJSONObject(0);
 
-                if (jsonUserProfile == null){
+                if (jsonUserProfile == null) {
                     callbackContext.error("User profile cannot be null");
                 }
 
@@ -109,7 +110,7 @@ public class CooeeSDKPlugin extends CordovaPlugin {
             try {
                 String userId = this.cooeesdk.getUserID();
                 if (TextUtils.isEmpty(userId)) {
-                    callbackContext.error("No UserID assigned yet")
+                    callbackContext.error("No UserID assigned yet");
                 }
 
                 callbackContext.success(userId);
