@@ -3,14 +3,12 @@
 const fs = require('fs');
 const version = require('./package.json').version;
 
-let data = fs.readFileSync('./plugin.xml', "utf8");
-data = data.replace(/version="[^"]+"/, `version="${version}"`);
-fs.writeFileSync('./plugin.xml', data);
+bumpVersion('./plugin.xml')
+bumpVersion('./src/android/Constants.java')
+bumpVersion('./src/ios/Constants.swift')
 
-let javaFileData = fs.readFileSync('./src/android/Constants.java', "utf8");
-javaFileData = javaFileData.replace(/version = "[^"]+"/, `version = "${version}"`);
-fs.writeFileSync('./src/android/Constants.java', javaFileData);
-
-let swiftFileData = fs.readFileSync('./src/ios/Constants.swift', "utf8");
-swiftFileData = swiftFileData.replace(/version = "[^"]+"/, `version = "${version}"`);
-fs.writeFileSync('./src/ios/Constants.swift', swiftFileData);
+function bumpVersion(path){
+    let fileData = fs.readFileSync(path, "utf8");
+    fileData = fileData.replace(/version = "[^"]+"/, `version = "${version}"`);
+    fs.writeFileSync(path, fileData);
+}
