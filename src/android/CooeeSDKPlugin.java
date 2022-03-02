@@ -82,6 +82,7 @@ public class CooeeSDKPlugin extends CordovaPlugin {
 
                 if (jsonUserProfile == null) {
                     callbackContext.error("User profile cannot be null");
+                    return true;
                 }
 
                 Map<String, Object> userProfile = toMap(jsonUserProfile);
@@ -111,6 +112,7 @@ public class CooeeSDKPlugin extends CordovaPlugin {
                 String userId = this.cooeesdk.getUserID();
                 if (TextUtils.isEmpty(userId)) {
                     callbackContext.error("No UserID assigned yet");
+                    return true;
                 }
 
                 callbackContext.success(userId);
