@@ -55,3 +55,12 @@ exports.updateUserProperties = function (properties, success, error) {
 exports.setCurrentScreen = function (screenName, success, error) {
     exec(success, error, "CooeeSdkPlugin", "setCurrentScreen", [screenName]);
 };
+
+/**
+ * Provides UserID assign by Cooee to the user
+ * @param success Success callback
+ * @param error Error callback
+ */
+exports.getUserID = function (success, error) {
+    exec(success, error, "CooeeSdkPlugin", "getUserID");
+};

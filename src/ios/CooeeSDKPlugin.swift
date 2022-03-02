@@ -41,6 +41,14 @@ func setCurrentScreen(command: CDVInvokedUrlCommand) {
   self.cooeesdk?.setCurrentScreen(screenName: screenName)
 }
 
+    @objc(getUserID:)
+    func getUserID(command: CDVInvokedUrlCommand) {
+        if let userId = self.cooeeSDK?.getUserID() {
+            self.commandDelegate.send(CDVPluginResult(status: CDVCommandStatus_OK, messageAs: userId), callbackId: command.callbackId)
+        } else {
+            self.commandDelegate.send(CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "Fail to get Used ID"), callbackId: command.callbackId)
+        }
+    }
 }
 
 extension CooeeSDKPlugin: CooeeCTADelegate{

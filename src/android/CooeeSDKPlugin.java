@@ -18,6 +18,7 @@ import android.util.Log;
 import com.letscooee.utils.CooeeCTAListener;
 import com.letscooee.retrofit.APIClient;
 import com.google.gson.Gson;
+import android.text.TextUtils;
 
 /**
  * Main wrapper for Cooee Android SDK.
@@ -97,6 +98,21 @@ public class CooeeSDKPlugin extends CordovaPlugin {
                 String screenName = args.getString(0);
                 this.cooeesdk.setCurrentScreen(screenName);
                 callbackContext.success("Screen name updated");
+            } catch (Exception e) {
+                callbackContext.error(e.toString());
+            }
+
+            return true;
+        }
+
+        if (action.equals("getUserID")) {
+            try {
+                String userId = this.cooeesdk.getUserID();
+                if (TextUtils.isEmpty(userId)) {
+                    callbackContext.error("No UserID assigned yet")
+                }
+
+                callbackContext.success(userId);
             } catch (Exception e) {
                 callbackContext.error(e.toString());
             }
