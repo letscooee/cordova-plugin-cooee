@@ -17,7 +17,11 @@ class CooeeSDKPlugin: CDVPlugin {
     @objc(sendEvent:)
     func sendEvent(command: CDVInvokedUrlCommand) {
         self.commandDelegate.run(inBackground: {
-            let eventName = command.argument(at: 0) as! String
+            guard let eventName = command.argument(at: 0) as? String else {
+                self.commandDelegate.send(CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "Event name can't be empty"), callbackId: command.callbackId)
+                return
+            }
+
             let eventProperties = command.argument(at: 1) as? [String: Any]
             do {
                 if let eventProperties = eventProperties {
@@ -27,7 +31,7 @@ class CooeeSDKPlugin: CDVPlugin {
                 }
                 self.commandDelegate.send(CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Event sent"), callbackId: command.callbackId)
             } catch {
-                self.commandDelegate.send(CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: [error]), callbackId: command.callbackId)
+                self.commandDelegate.send(CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "Fail to update user profile: \(error)"), callbackId: command.callbackId)
             }
         })
     }
@@ -35,7 +39,11 @@ class CooeeSDKPlugin: CDVPlugin {
     @objc(updateUserProfile:)
     func updateUserProfile(command: CDVInvokedUrlCommand) {
         self.commandDelegate.run(inBackground: {
-            let userData = command.argument(at: 0) as! [String: Any]
+            guard let userData = command.argument(at: 0) as? [String: Any] else {
+                self.commandDelegate.send(CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "User profile data can't be empty"), callbackId: command.callbackId)
+                return
+            }
+
             do {
                 try self.cooeeSDK?.updateUserProfile(userData)
                 self.commandDelegate.send(CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "User profile updated"), callbackId: command.callbackId)
@@ -47,7 +55,11 @@ class CooeeSDKPlugin: CDVPlugin {
 
     @objc(setCurrentScreen:)
     func setCurrentScreen(command: CDVInvokedUrlCommand) {
-        let screenName = command.argument(at: 0) as! String
+        guard let screenName = command.argument(at: 0) as? String else {
+            self.commandDelegate.send(CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "Screen name can't be empty"), callbackId: command.callbackId)
+            return
+        }
+
         self.cooeeSDK?.setCurrentScreen(screenName: screenName)
         self.commandDelegate.send(CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Screen name updated"), callbackId: command.callbackId)
     }
