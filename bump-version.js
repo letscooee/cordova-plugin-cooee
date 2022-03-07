@@ -12,6 +12,6 @@ bumpVersion('./src/ios/Constants.swift')
 
 function bumpVersion(path){
     let fileData = fs.readFileSync(path, "utf8");
-    fileData = fileData.replace(/version = "[^"]+"/, `version = "${version}"`);
+    fileData = fileData.replace(/CORDOVA_PLUGIN_VERSION = "[^"]+"/, `CORDOVA_PLUGIN_VERSION = "${version}"`);
     fs.writeFileSync(path, fileData);
 }
