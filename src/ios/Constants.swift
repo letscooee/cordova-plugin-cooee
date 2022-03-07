@@ -5,5 +5,8 @@
   - Since: 1.3.1
  */
 struct Constants {
-    public static let version = "1.3.0"
+
+	// CORDOVA_PLUGIN_VERSION will be bumped via commandline while publishing the plugin
+	// i.e. when npm version is executed
+    public static let CORDOVA_PLUGIN_VERSION = "1.3.0"
 }

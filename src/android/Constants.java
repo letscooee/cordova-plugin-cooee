@@ -7,5 +7,8 @@ package com.letscooee.utils;
  * @since 1.3.1
  */
 public class Constants {
-    public static String version = "1.3.0";
+
+    // CORDOVA_PLUGIN_VERSION will be bumped via commandline while publishing the plugin
+    // i.e. when npm version is executed
+    public static String CORDOVA_PLUGIN_VERSION = "1.3.0";
 }
