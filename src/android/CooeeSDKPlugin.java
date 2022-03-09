@@ -18,6 +18,7 @@ import android.util.Log;
 import com.letscooee.utils.CooeeCTAListener;
 import com.letscooee.retrofit.APIClient;
 import com.google.gson.Gson;
+import android.text.TextUtils;
 
 /**
  * Main wrapper for Cooee Android SDK.
@@ -59,9 +60,10 @@ public class CooeeSDKPlugin extends CordovaPlugin {
             try {
                 String eventName = args.getString(0);
                 JSONObject jsonEventProperties = args.getJSONObject(1);
-                if (jsonEventProperties == null){
+
+                if (jsonEventProperties == null) {
                     this.cooeesdk.sendEvent(eventName);
-                }else {
+                } else {
                     Map<String, Object> eventProperties = toMap(jsonEventProperties);
                     this.cooeesdk.sendEvent(eventName, eventProperties);
                 }
@@ -78,8 +80,9 @@ public class CooeeSDKPlugin extends CordovaPlugin {
             try {
                 JSONObject jsonUserProfile = args.getJSONObject(0);
 
-                if (jsonUserProfile == null){
+                if (jsonUserProfile == null) {
                     callbackContext.error("User profile cannot be null");
+                    return true;
                 }
 
                 Map<String, Object> userProfile = toMap(jsonUserProfile);
@@ -97,6 +100,22 @@ public class CooeeSDKPlugin extends CordovaPlugin {
                 String screenName = args.getString(0);
                 this.cooeesdk.setCurrentScreen(screenName);
                 callbackContext.success("Screen name updated");
+            } catch (Exception e) {
+                callbackContext.error(e.toString());
+            }
+
+            return true;
+        }
+
+        if (action.equals("getUserID")) {
+            try {
+                String userId = this.cooeesdk.getUserID();
+                if (TextUtils.isEmpty(userId)) {
+                    callbackContext.error("No UserID assigned yet");
+                    return true;
+                }
+
+                callbackContext.success(userId);
             } catch (Exception e) {
                 callbackContext.error(e.toString());
             }
