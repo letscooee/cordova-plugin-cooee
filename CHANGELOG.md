@@ -1,5 +1,13 @@
 # Change Log
 
+# 1.3.1
+
+### Improvements
+
+1. Add Callbacks from iOS platform
+2. Using Android SDK v1.3.5
+3. Using iOS SDK v1.3.12
+
 # 1.3.0
 
 1. Add hooks to configure `Swift_Version` and Add `Notification Service`.
