@@ -10,6 +10,7 @@ class CooeeSDKPlugin: CDVPlugin {
         self.commandDelegate.run(inBackground: {
             AppController.configure()
             self.cooeeSDK = CooeeSDK.getInstance()
+            self.cooeeSDK?.setOnCTADelegate(self)
             self.cooeeSDK?.setWrapper("cordova")
         })
     }
