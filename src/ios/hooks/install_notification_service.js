@@ -17,7 +17,7 @@ module.exports = function (context) {
     ];
     const sourceDir = `plugins/@letscooee/cordova-plugin/src/extensions/SupportFiles/`;
     const podEnd = '\nend';
-    const podfileContent = `\n\n\ttarget \'${extName}\' do\n\t\tpod \'CooeeSDK\'\n\tend${podEnd}`;
+    const podfileContent = `\n\n\ttarget \'${extName}\' do\n\t\tinherit! :search_paths\n\tend${podEnd}`;
     const argumentArray = process.argv;
 
     /******************* Fetch COOEE_APP_ID *******************/
