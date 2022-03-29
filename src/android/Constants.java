@@ -10,5 +10,5 @@ public class Constants {
 
     // CORDOVA_PLUGIN_VERSION will be bumped via commandline while publishing the plugin
     // i.e. when npm version is executed
-    public static String CORDOVA_PLUGIN_VERSION = "1.3.2";
+    public static String CORDOVA_PLUGIN_VERSION = "1.3.3";
 }

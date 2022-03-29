@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="@letscooee/cordova-plugin" version="1.3.2" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+<plugin id="@letscooee/cordova-plugin" version="1.3.3" xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Cooee Cordova Plugin</name>
     <js-module name="CooeeSDKPlugin" src="www/cooee-sdk-plugin.js">

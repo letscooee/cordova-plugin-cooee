@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.3.3
+
+### Fixes
+
+1. Fix Android nested event properties.
+
 ## 1.3.2
 
 ### Improvements
