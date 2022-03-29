@@ -8,7 +8,7 @@ module.exports = function (context) {
     const appBundleId = `${appConfig.doc._root.attrib.id}`;
     const iosPath = 'platforms/ios/';
     const projPath = `${iosPath}${appName}.xcodeproj/project.pbxproj`;
-    const extName = 'MyNotificationServiceExtension';
+    const extName = 'CooeeNotificationServiceExtension';
     const extFiles = [
         'NotificationService.h',
         'NotificationService.m',
