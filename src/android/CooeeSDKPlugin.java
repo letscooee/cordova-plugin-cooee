@@ -127,14 +127,6 @@ public class CooeeSDKPlugin extends CordovaPlugin {
     }
 
     private Map<String, Object> toMap(JSONObject jsonObject) throws JSONException {
-        Map<String, Object> map = new HashMap<String, Object>();
-        Iterator<String> keys = jsonObject.keys();
-
-        while (keys.hasNext()) {
-            String key = keys.next();
-            map.put(key, jsonObject.get(key));
-        }
-
-        return map;
+        return new Gson().fromJson(jsonObject.toString(), HashMap.class);
     }
 }
