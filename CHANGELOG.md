@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.3.4 (2022-04-13)
+
+### Improvements
+
+1. Using Android SDK v1.3.9.
+
+### Fixes
+
+1. Fix Push Notification and InApp not rendering in Android.
+
 ## 1.3.3
 
 ### Fixes
