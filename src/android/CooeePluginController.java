@@ -26,7 +26,7 @@ public class CooeePluginController extends AppController {
     @Override
     public void onCreate() {
         FCMBroadcastListener broadcastReceiver = new FCMBroadcastListener();
-        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, new IntentFilter(Constatnts.FCM_MESSAGE_ACTION));
+        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, new IntentFilter(Constants.FCM_MESSAGE_ACTION));
         super.onCreate();
     }
 
