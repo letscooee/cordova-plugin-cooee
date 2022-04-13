@@ -38,6 +38,7 @@
     },
     "homepage": "https://github.com/letscooee/cordova-plugin-cooee#readme",
     "dependencies": {
+        "cordova-plugin-googleplayservices": "^19.0.3",
         "glob": "^7.2.0",
         "semver": "^7.3.5",
         "xcode": "^3.0.1"
