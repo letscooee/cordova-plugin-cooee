@@ -25,11 +25,7 @@
             <receiver
                     android:name="com.letscooee.FCMBroadcastListener"
                     android:enabled="true"
-                    android:exported="true">
-                <intent-filter>
-                    <action android:name="by.chemerisuk.cordova.firebase.ACTION_FCM_MESSAGE"/>
-                </intent-filter>
-            </receiver>
+                    android:exported="true"/>
         </config-file>
 
         <edit-config
