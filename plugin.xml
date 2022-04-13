@@ -22,30 +22,20 @@
             <meta-data android:name="COOEE_APP_ID" android:value="$COOEE_APP_ID"/>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <receiver
-                    android:name="com.letscooee.FCMBroadcastListener"
-                    android:enabled="true"
-                    android:exported="true"/>
+            <receiver android:name="com.letscooee.FCMBroadcastListener" android:enabled="true" android:exported="true"/>
         </config-file>
 
-        <edit-config
-                file="app/src/main/AndroidManifest.xml"
-                target="/manifest"
-                mode="merge">
+        <edit-config file="app/src/main/AndroidManifest.xml" target="/manifest" mode="merge">
             <manifest xmlns:tools="http://schemas.android.com/tools"/>
         </edit-config>
-        <edit-config
-                file="app/src/main/AndroidManifest.xml"
-                target="/manifest/application"
-                mode="merge">
+
+        <edit-config file="app/src/main/AndroidManifest.xml" target="/manifest/application" mode="merge">
             <application android:name="com.letscooee.CooeePluginController" tools:replace="android:name"/>
         </edit-config>
 
         <source-file src="src/android/CooeeSDKPlugin.java" target-dir="src/com/letscooee/cordova"/>
-        <source-file src="src/android/FCMBroadcastListener.java"
-                     target-dir="src/com/letscooee/cordova"/>
-        <source-file src="src/android/CooeePluginController.java"
-                     target-dir="src/com/letscooee/cordova"/>
+        <source-file src="src/android/FCMBroadcastListener.java" target-dir="src/com/letscooee/cordova"/>
+        <source-file src="src/android/CooeePluginController.java" target-dir="src/com/letscooee/cordova"/>
         <source-file src="src/android/Constants.java" target-dir="src/com/letscooee/cordova/utils"/>
 
         <framework src="src/android/build.gradle" custom="true" type="gradleReference"/>
