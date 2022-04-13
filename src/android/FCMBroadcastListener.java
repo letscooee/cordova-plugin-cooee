@@ -20,12 +20,11 @@ public class FCMBroadcastListener extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        System.out.println("FCMBroadcast.onReceive()");
         RemoteMessage remoteMessage = intent.getParcelableExtra(Constants.FCM_MESSAGE_DATA);
         if (remoteMessage == null || remoteMessage.getData().size() == 0) {
             return;
         }
-        System.out.println("FCMBroadcast.notEmpty()" + remoteMessage.getData().get("triggerData"));
+
         new CooeeFirebaseMessagingService(context).handleTriggerData(remoteMessage.getData().get("triggerData"));
     }
 }
