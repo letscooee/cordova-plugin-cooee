@@ -1,4 +1,4 @@
-package org.letscooee.cooeesdk;
+package com.letscooee.utils;
 
 /**
  * Plugin constants

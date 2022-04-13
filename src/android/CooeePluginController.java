@@ -1,9 +1,10 @@
-package org.letscooee.cooeesdk;
+package com.letscooee;
 
 import com.letscooee.init.AppController;
 import android.content.IntentFilter;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.content.Intent;
+import com.letscooee.utils.Constants;
 
 /**
  * CooeePluginController is instance of {@link com.letscooee.init.AppController} which start with application.

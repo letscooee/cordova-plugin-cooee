@@ -14,7 +14,7 @@
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="CooeeSdkPlugin">
-                <param name="android-package" value="org.letscooee.cooeesdk.CooeeSDKPlugin"/>
+                <param name="android-package" value="com.letscooee.CooeeSDKPlugin"/>
                 <param name="onload" value="true"/>
             </feature>
         </config-file>
@@ -23,7 +23,7 @@
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <receiver
-                    android:name="org.letscooee.cooeesdk.FCMBroadcastListener"
+                    android:name="com.letscooee.FCMBroadcastListener"
                     android:enabled="true"
                     android:exported="true">
                 <intent-filter>
@@ -42,15 +42,15 @@
                 file="app/src/main/AndroidManifest.xml"
                 target="/manifest/application"
                 mode="merge">
-            <application android:name="org.letscooee.cooeesdk.CooeePluginController" tools:replace="android:name"/>
+            <application android:name="com.letscooee.CooeePluginController" tools:replace="android:name"/>
         </edit-config>
 
-        <source-file src="src/android/CooeeSDKPlugin.java" target-dir="src/org/letscooee/cooeesdk/CooeeSDKPlugin"/>
+        <source-file src="src/android/CooeeSDKPlugin.java" target-dir="src/com/letscooee/cordova"/>
         <source-file src="src/android/FCMBroadcastListener.java"
-                     target-dir="src/org/letscooee/cooeesdk/CooeeSDKPlugin"/>
+                     target-dir="src/com/letscooee/cordova"/>
         <source-file src="src/android/CooeePluginController.java"
-                     target-dir="src/org/letscooee/cooeesdk/CooeeSDKPlugin"/>
-        <source-file src="src/android/Constants.java" target-dir="src/org/letscooee/cooeesdk/CooeeSDKPlugin"/>
+                     target-dir="src/com/letscooee/cordova"/>
+        <source-file src="src/android/Constants.java" target-dir="src/com/letscooee/cordova/utils"/>
 
         <framework src="src/android/build.gradle" custom="true" type="gradleReference"/>
         <config-file after="uses-permission" parent="/manifest" target="AndroidManifest.xml">
