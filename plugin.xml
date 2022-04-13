@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin id="@letscooee/cordova-plugin" version="1.3.3" xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
     <name>Cooee Cordova Plugin</name>
     <js-module name="CooeeSDKPlugin" src="www/cooee-sdk-plugin.js">
         <clobbers target="cordova.plugins.Cooee"/>
@@ -14,12 +15,43 @@
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="CooeeSdkPlugin">
                 <param name="android-package" value="org.letscooee.cooeesdk.CooeeSDKPlugin"/>
+                <param name="onload" value="true"/>
             </feature>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <meta-data android:name="COOEE_APP_ID" android:value="$COOEE_APP_ID"/>
         </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <receiver
+                    android:name="org.letscooee.cooeesdk.FCMBroadcastListener"
+                    android:enabled="true"
+                    android:exported="true">
+                <intent-filter>
+                    <action android:name="by.chemerisuk.cordova.firebase.ACTION_FCM_MESSAGE"/>
+                </intent-filter>
+            </receiver>
+        </config-file>
+
+        <edit-config
+                file="app/src/main/AndroidManifest.xml"
+                target="/manifest"
+                mode="merge">
+            <manifest xmlns:tools="http://schemas.android.com/tools"/>
+        </edit-config>
+        <edit-config
+                file="app/src/main/AndroidManifest.xml"
+                target="/manifest/application"
+                mode="merge">
+            <application android:name="org.letscooee.cooeesdk.CooeePluginController" tools:replace="android:name"/>
+        </edit-config>
+
         <source-file src="src/android/CooeeSDKPlugin.java" target-dir="src/org/letscooee/cooeesdk/CooeeSDKPlugin"/>
+        <source-file src="src/android/FCMBroadcastListener.java"
+                     target-dir="src/org/letscooee/cooeesdk/CooeeSDKPlugin"/>
+        <source-file src="src/android/CooeePluginController.java"
+                     target-dir="src/org/letscooee/cooeesdk/CooeeSDKPlugin"/>
+        <source-file src="src/android/Constants.java" target-dir="src/org/letscooee/cooeesdk/CooeeSDKPlugin"/>
+
         <framework src="src/android/build.gradle" custom="true" type="gradleReference"/>
         <config-file after="uses-permission" parent="/manifest" target="AndroidManifest.xml">
             <uses-permission android:name="android.permission.ACCESS_COURSE_LOCATION"/>
