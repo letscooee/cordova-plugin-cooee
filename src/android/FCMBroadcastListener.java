@@ -1,11 +1,11 @@
-package com.letscooee;
+package com.letscooee.cordova;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.google.firebase.messaging.RemoteMessage;
 import com.letscooee.services.CooeeFirebaseMessagingService;
-import com.letscooee.utils.Constants;
+import com.letscooee.cordova.utils.Constants;
 
 /**
  * FCMBroadcastListener is listen to {@link Constants#FCM_MESSAGE_ACTION} action which is fired by

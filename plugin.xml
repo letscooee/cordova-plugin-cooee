@@ -14,7 +14,7 @@
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="CooeeSdkPlugin">
-                <param name="android-package" value="com.letscooee.CooeeSDKPlugin"/>
+                <param name="android-package" value="com.letscooee.cordova.CooeeSDKPlugin"/>
                 <param name="onload" value="true"/>
             </feature>
         </config-file>
@@ -22,7 +22,7 @@
             <meta-data android:name="COOEE_APP_ID" android:value="$COOEE_APP_ID"/>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <receiver android:name="com.letscooee.FCMBroadcastListener" android:enabled="true" android:exported="true"/>
+            <receiver android:name="com.letscooee.cordova.FCMBroadcastListener" android:enabled="true" android:exported="false"/>
         </config-file>
 
         <edit-config file="app/src/main/AndroidManifest.xml" target="/manifest" mode="merge">
@@ -30,7 +30,7 @@
         </edit-config>
 
         <edit-config file="app/src/main/AndroidManifest.xml" target="/manifest/application" mode="merge">
-            <application android:name="com.letscooee.CooeePluginController" tools:replace="android:name"/>
+            <application android:name="com.letscooee.cordova.CooeePluginController" tools:replace="android:name"/>
         </edit-config>
 
         <source-file src="src/android/CooeeSDKPlugin.java" target-dir="src/com/letscooee/cordova"/>

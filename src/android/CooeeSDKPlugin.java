@@ -1,4 +1,4 @@
-package com.letscooee;
+package com.letscooee.cordova;
 
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaWebView;

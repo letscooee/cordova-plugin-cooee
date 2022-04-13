@@ -1,4 +1,4 @@
-package com.letscooee.utils;
+package com.letscooee.cordova.utils;
 
 /**
  * Plugin constants
