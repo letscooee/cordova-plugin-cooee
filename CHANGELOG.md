@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.3.5 (2022-05-05)
+
+### Fixes
+
+1. Fix `edit-config` conflicts while installing plugin.
+
 ## 1.3.4 (2022-04-13)
 
 ### Improvements
