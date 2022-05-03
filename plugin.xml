@@ -25,14 +25,6 @@
             <receiver android:name="com.letscooee.cordova.FCMBroadcastListener" android:enabled="true" android:exported="false"/>
         </config-file>
 
-        <edit-config file="app/src/main/AndroidManifest.xml" target="/manifest" mode="merge">
-            <manifest xmlns:tools="http://schemas.android.com/tools"/>
-        </edit-config>
-
-        <edit-config file="app/src/main/AndroidManifest.xml" target="/manifest/application" mode="merge">
-            <application android:name="com.letscooee.cordova.CooeePluginController" tools:replace="android:name"/>
-        </edit-config>
-
         <source-file src="src/android/CooeeSDKPlugin.java" target-dir="src/com/letscooee/cordova"/>
         <source-file src="src/android/FCMBroadcastListener.java" target-dir="src/com/letscooee/cordova"/>
         <source-file src="src/android/CooeePluginController.java" target-dir="src/com/letscooee/cordova"/>
