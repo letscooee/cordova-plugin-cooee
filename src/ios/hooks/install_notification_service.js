@@ -20,13 +20,45 @@ module.exports = function (context) {
     const podfileContent = `\n\n\ttarget \'${extName}\' do\n\t\tinherit! :search_paths\n\tend${podEnd}`;
     const argumentArray = process.argv;
 
-    /******************* Fetch COOEE_APP_ID *******************/
-    let appId = "";
-    argumentArray.forEach(function (arg) {
-        if (arg.startsWith("COOEE_APP_ID")) {
-            appId = arg.split("=")[1];
+    /**
+     * Find and access COOEE_APP_ID at process.argv and package.json and returns it.
+     * If not found, Throws error.
+     * @returns {string|*}
+     */
+    function getAppID() {
+        let appId = "";
+        /**
+         * Finds COOEE_APP_ID at process.argv.
+         * Works while adding plugin to project.
+         */
+        argumentArray.forEach(function (arg) {
+            if (arg.startsWith("COOEE_APP_ID")) {
+                appId = arg.split("=")[1];
+            }
+        });
+
+        if (appId && appId !== "") {
+            return appId;
         }
-    });
+
+        /**
+         * Finds COOEE_APP_ID at package.json.
+         * Works when plugin is installed and platform is getting add.
+         */
+        let json = JSON.parse(fs.readFileSync('package.json', 'utf8'))
+        appId = json.cordova.plugins['@letscooee/cordova-plugin'].COOEE_APP_ID;
+
+        if (appId && appId !== "") {
+            return appId;
+        }
+
+        throw new cordovaCommon.CordovaError('Fail to find COOEE_APP_ID in process.argv or package.json. Stopping the build.');
+    }
+
+    /******************* Fetch COOEE_APP_ID *******************/
+    let appId = getAppID();
+    console.log('Found COOEE_APP_ID: ' + appId);
+
     console.log(`Adding ${extName} notification extension to ${appName}`);
     let proj = xcode.project(projPath);
 
