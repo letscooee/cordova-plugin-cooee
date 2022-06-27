@@ -44,13 +44,13 @@ module.exports = function (context) {
      */
     function getAppIDFromPackageJSON() {
         let json = JSON.parse(fs.readFileSync('package.json', 'utf8'))
-        return json.cordova.plugins['@letscooee/cordova-plugin'].COOEE_APP_ID;
+        return json.cordova.plugins['@letscooee/cordova-plugin']?.COOEE_APP_ID;
     }
 
     /******************* Fetch COOEE_APP_ID *******************/
-    let appId = getAppIDFromCMD() ?? getAppIDFromPackageJSON();
+    let appId = getAppIDFromCMD() || getAppIDFromPackageJSON();
     if (!appId) {
-        throw new cordovaCommon.CordovaError('Fail to find COOEE_APP_ID in process.argv or package.json. Stopping the build.');
+        throw new cordovaCommon.CordovaError('Fail to find COOEE_APP_ID. Stopping the build.');
     }
 
     console.log('Found COOEE_APP_ID: ' + appId);
