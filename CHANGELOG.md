@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.3.8 (2022-06-29)
+
+### Improvements
+
+1. Using iOS SDK v1.3.15.
+2. Update Hook to handle `cordova platform add` command.
+
 ## 1.3.7 (2022-05-31)
 
 ### Improvements
