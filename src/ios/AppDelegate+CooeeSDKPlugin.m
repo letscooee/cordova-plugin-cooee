@@ -1,6 +1,7 @@
 #import "AppDelegate+CooeeSDKPlugin.h"
 #import <UserNotifications/UserNotifications.h>
 #import "CooeeSDK/CooeeSDK-Swift.h"
+#import "Constants.h"
 
 @interface AppDelegate () <UNUserNotificationCenterDelegate>
 @end
