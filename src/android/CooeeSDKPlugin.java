@@ -47,7 +47,6 @@ public class CooeeSDKPlugin extends CordovaPlugin {
         try {
             this.cooeesdk = CooeeSDK.getDefaultInstance(cordova.getActivity().getApplicationContext());
             this.cooeesdk.setCTAListener(this.listener);
-            APIClient.setWrapperName("cordova");
 
         } catch (Exception e) {
             e.printStackTrace();
