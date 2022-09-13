@@ -84,6 +84,8 @@
         <source-file src="src/ios/AppDelegate+CooeeSDKPlugin.m"/>
         <header-file src="src/ios/CooeeSDKPlugin.h"/>
         <source-file src="src/ios/CooeeSDKPlugin.swift"/>
+        <source-file src="src/ios/Constants.h"/>
+        <source-file src="src/ios/Constants.m"/>
 
         <podspec>
             <pods use-frameworks="true">
