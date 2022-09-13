@@ -122,6 +122,12 @@ public class CooeeSDKPlugin extends CordovaPlugin {
             return true;
         }
 
+        if (action.equals("showDebugInfo")) {
+            this.cooeesdk.showDebugInfo();
+            callbackContext.success("Displaying Debug Info");
+            return true;
+        }
+
         return false;
     }
 

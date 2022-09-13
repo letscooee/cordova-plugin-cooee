@@ -72,6 +72,12 @@ class CooeeSDKPlugin: CDVPlugin {
             self.commandDelegate.send(CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "Fail to get Used ID"), callbackId: command.callbackId)
         }
     }
+
+    @objc(showDebugInfo:)
+    func showDebugInfo(command: CDVInvokedUrlCommand) {
+            self.cooeeSDK?.showDebugInfo()
+            self.commandDelegate.send(CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Displaying Debug Info"), callbackId: command.callbackId)
+    }
 }
 
 extension CooeeSDKPlugin: CooeeCTADelegate {
