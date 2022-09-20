@@ -89,7 +89,7 @@
 
         <podspec>
             <pods use-frameworks="true">
-                <pod name="CooeeSDK" spec="~> 1.4.0" swift-version="5.0"/>
+                <pod name="CooeeSDK" spec="~> 1.4.1" swift-version="5.0"/>
             </pods>
         </podspec>
 
