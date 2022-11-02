@@ -23,6 +23,7 @@ public class FCMBroadcastListener extends BroadcastReceiver {
     public FCMBroadcastListener() {
         CooeeFirebaseMessagingService.setMessageDelivered();
     }
+
     @Override
     public void onReceive(Context context, Intent intent) {
         RemoteMessage remoteMessage = intent.getParcelableExtra(Constants.FCM_MESSAGE_DATA);
