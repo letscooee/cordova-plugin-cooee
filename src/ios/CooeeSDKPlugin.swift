@@ -11,7 +11,6 @@ class CooeeSDKPlugin: CDVPlugin {
             AppController.configure()
             self.cooeeSDK = CooeeSDK.getInstance()
             self.cooeeSDK?.setOnCTADelegate(self)
-            self.cooeeSDK?.setWrapper("cordova")
         })
     }
 
@@ -72,6 +71,12 @@ class CooeeSDKPlugin: CDVPlugin {
         } else {
             self.commandDelegate.send(CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "Fail to get Used ID"), callbackId: command.callbackId)
         }
+    }
+
+    @objc(showDebugInfo:)
+    func showDebugInfo(command: CDVInvokedUrlCommand) {
+            self.cooeeSDK?.showDebugInfo()
+            self.commandDelegate.send(CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Displaying Debug Info"), callbackId: command.callbackId)
     }
 }
 

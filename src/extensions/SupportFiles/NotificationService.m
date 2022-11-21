@@ -19,7 +19,7 @@
 
 - (void)didReceiveNotificationRequest:(UNNotificationRequest *)request withContentHandler:(void (^)(UNNotificationContent * _Nonnull))contentHandler {
     self.contentHandler = contentHandler;
-    self.bestAttemptContent = [CooeeNotificationService updateContent:[request.content mutableCopy] with:request.content.userInfo];
+    self.bestAttemptContent = [CooeeNotificationService updateContentFromRequest:request];
     
     // Modify the notification content here...
     self.contentHandler(self.bestAttemptContent);

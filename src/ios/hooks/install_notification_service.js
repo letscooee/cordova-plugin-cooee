@@ -141,10 +141,6 @@ module.exports = function (context) {
 
     });
 
-    /************** Updating AppDelegate.m ****************/
-    const addDelegateContent = fs.readFileSync(`${sourceDir}/AppDelegate.m`, 'utf8');
-    fs.writeFileSync(`${iosPath}${appName}/Classes/AppDelegate.m`, addDelegateContent, 'utf8');
-
     /************** Updating Podfile *********************/
     const currentPodFieContent = fs.readFileSync(`${iosPath}/Podfile`, 'utf8');
     const newPodFile = currentPodFieContent.replace(podEnd, podfileContent);

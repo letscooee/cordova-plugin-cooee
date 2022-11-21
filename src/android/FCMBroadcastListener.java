@@ -7,6 +7,8 @@ import com.google.firebase.messaging.RemoteMessage;
 import com.letscooee.services.CooeeFirebaseMessagingService;
 import com.letscooee.cordova.utils.Constants;
 
+import java.util.concurrent.Executors;
+
 /**
  * FCMBroadcastListener is listen to {@link Constants#FCM_MESSAGE_ACTION} action which is fired by
  * <a href="https://www.npmjs.com/package/cordova-plugin-firebase-messaging">cordova-plugin-firebase-messaging</a> plugin.
@@ -18,6 +20,10 @@ import com.letscooee.cordova.utils.Constants;
  */
 public class FCMBroadcastListener extends BroadcastReceiver {
 
+    public FCMBroadcastListener() {
+        CooeeFirebaseMessagingService.setMessageDelivered();
+    }
+
     @Override
     public void onReceive(Context context, Intent intent) {
         RemoteMessage remoteMessage = intent.getParcelableExtra(Constants.FCM_MESSAGE_DATA);
@@ -25,6 +31,6 @@ public class FCMBroadcastListener extends BroadcastReceiver {
             return;
         }
 
-        new CooeeFirebaseMessagingService(context).handleTriggerData(remoteMessage.getData().get("triggerData"));
+        Executors.newSingleThreadExecutor().execute(() -> new CooeeFirebaseMessagingService(context).handleRemoteMessage(remoteMessage));
     }
 }

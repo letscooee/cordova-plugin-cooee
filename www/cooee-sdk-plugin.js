@@ -64,3 +64,16 @@ exports.setCurrentScreen = function (screenName, success, error) {
 exports.getUserID = function (success, error) {
     exec(success, error, "CooeeSdkPlugin", "getUserID");
 };
+
+/**
+ * Launch Debug info screen from the SDK. This can be use for debug purposes.
+ * <p>This screen holds user and device information.</p>
+ * <p>This Screen is password protected and can be access only with Cooee representative.</p>
+ *
+ * <p><b>Note:This screen should not be directly accessible to the end user.</b></p>
+ * @param success Success callback
+ * @param error Error callback
+ */
+exports.showDebugInfo = function (success, error) {
+    exec(success, error, "CooeeSdkPlugin", "showDebugInfo");
+};
