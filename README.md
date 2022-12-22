@@ -8,7 +8,7 @@ Let’s Cooee powers hyper-personalized and real time engagements for mobile app
 cloud infrastructure processes millions of user transactions and data attributes to create unique and contextual user engagement
 triggers for end users with simple SDK integration that requires no coding at mobile app level.
 
-For more information visit our [website](https://www.letscooee.com/) and [documentation](https://docs.letscooee.com/developers/ios/quickstart).
+For more information visit our [website](https://www.letscooee.com/) and [documentation](https://docs.letscooee.com/developers/cordova).
 
 ## Features
 
@@ -25,4 +25,4 @@ For more information visit our [website](https://www.letscooee.com/) and [docume
 
 ## Installation & Uses
 
-For detailed installation & uses, Refer [Cordova](https://docs.letscooee.com/developers/cordova/quickstart) documentation.
+For detailed installation & uses, Refer [Cordova](https://docs.letscooee.com/developers/cordova/get-started) documentation.
